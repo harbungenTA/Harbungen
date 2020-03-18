@@ -15,7 +15,7 @@ int main()
 			tab[a] = 100;
 			tab[a - 1] = 10;
 			tab[a + 1] = 10;
-            for (int i = 119; i >= 0; i--)
+            for (int i = 120; i >= 0; i--)
             {
                 if (tab[i] == '121')
                 {
