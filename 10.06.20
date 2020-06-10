@@ -1,0 +1,42 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int max;
+
+int main() {
+
+	int t[100];
+	int losowa;
+
+	ifstream plik;
+	plik.open("plik.txt");
+
+	ofstream plik2;
+	plik2.open("plik2.json");
+
+	if (plik.good())
+		while (!plik.eof())
+			for (int i = 0; i < 100; i++);
+	{
+		plik >> t;
+	}
+	plik.close();
+
+	max = t[0];
+
+	for (int i = 1; i < 7; i++)
+		if (max > t[i])
+			max = t[i];
+
+	losowa = rand() % max + 1;
+
+	plik2 << "{max":" "<< max << "losowa_ocena":" "losowa"<< \n";
+
+  plik2.close();
+  
+	return 0;
+}
