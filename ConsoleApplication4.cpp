@@ -1,11 +1,11 @@
-﻿#include<iostream>
+#include<iostream>
 #include<cstdlib>
 #include<fstream>
+#include<string>
 
 using namespace std;
-string liczba;
-int nieparzyste(string);
-int nieparzyste(string liczba)
+int liczba;
+ int nieparzyste(int liczba)
 {
     int dl = liczba.length();
     int wynik = 0;
@@ -32,10 +32,16 @@ int main()
                     cout << i << " ";
                     licz /= i;
                     i >> liczba;
+                    nieparzyste(i);
+                    if (nieparzyste == 3) {
+                        cout << "TAK";
+                    }
+                    else {
+                        cout << "Nie";
+                    }
                 }
             }
         }
-    nieparzyste();
     liczby.close();
     cout << "\n";
     system("pause");
