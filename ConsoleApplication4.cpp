@@ -4,8 +4,9 @@
 #include<string>
 
 using namespace std;
+
 int liczba;
- int nieparzyste(int liczba)
+ int nieparzyste(string liczba)
 {
     int dl = liczba.length();
     int wynik = 0;
@@ -32,8 +33,8 @@ int main()
                     cout << i << " ";
                     licz /= i;
                     i >> liczba;
-                    nieparzyste(i);
-                    if (nieparzyste == 3) {
+                    nieparzyste(to_string(i));
+                    if (liczba == 3) {
                         cout << "TAK";
                     }
                     else {
