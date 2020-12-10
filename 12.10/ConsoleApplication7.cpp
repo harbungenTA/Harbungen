@@ -30,7 +30,7 @@ void plik::loop() {
 		{
 			wej >> a[i];
 			if (a[i] < 1000) {
-				a[] >> wyj;
+				wyj <<a[i];
 				licznik++;
 			}
 		}
