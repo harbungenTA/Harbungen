@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 
 using namespace std;
@@ -26,7 +26,7 @@ void plik::loop() {
 	int a[];
 	int licznik = 0;
 	while (1000) {
-		for (int i = 0;i < 200; i++)
+		for (int i = 0;i < 1000; i++)
 		{
 			wej >> a[i];
 			if (a[i] < 1000) {
@@ -34,10 +34,12 @@ void plik::loop() {
 				licznik++;
 			}
 		}
-		wyj << " ";
-		wyj << a[999];
-		wyj << " ";
-		wyj << a[1000];
+		if (a[] < 1000) {
+			wyj << " ";
+			wyj << a[999];
+			wyj << " ";
+			wyj << a[1000];
+		}
 	}
 }
 
