@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <math.h>
 
@@ -17,7 +17,7 @@ bool ch(int liczba) {
 }
 int main() {
     ifstream wej("ciagi.txt");
-
+    ofstream wyj("wyj.txt");
     bool cube;
     bool cube2;
     int ciag[1000];
@@ -41,9 +41,10 @@ int main() {
         cube2 = false;
     }
     for (int i = 0; i < o; i++) {
-        cout << cubeCiag[i];
+        wyj << cubeCiag[i];
 
     }
-
+    wej.close();
+    wyj.close();
     return 0;
 }
