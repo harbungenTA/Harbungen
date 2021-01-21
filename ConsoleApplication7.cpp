@@ -1,55 +1,49 @@
 ﻿#include <iostream>
 #include <fstream>
-#include <cstdlib>
-#include <vector>
+#include <math.h>
 
 using namespace std;
 
-void lad() {
-	int li, li2, li1, di, di1;
-
-	bool pi = true;
-
-	ifstream ciag;
-	ciag.open("ciagi.txt");
-
-	while (ciag.good()) {
-
-		bool ciag1 = true;
-
-		if (!ciag.eof()) {
-
-			ciag >> li;
-			li2 = li;
-			for (int i = 0; i < li2; i++) {
-				ciag >> li;
-
-				if (pi == false) {
-					di = li1 - li;
-				}
-				if (di != di1) {
-					ciag1 = false;
-
-				}
-				li1 = li;
-				pi = false;
-				di1 = di;
-			}
-			if (ciag1 == false) {
-				cout << endl << "nope";
-			}
-			else {
-				cout << endl << "yea";
-			}
-		}
-	}
-	ciag.close();
+const int o = 100;
+bool ch(int liczba) {
+    int cube = 0;
+    for (int i = 0; i < liczba / 2 && liczba >= cube; i++) {
+        cube = i * i * i;
+        if (liczba == cube) {
+            return true;
+        }
+    }
+    return false;
 }
-
-
 int main() {
+    ifstream wej("ciagi.txt");
 
-	lad();
+    bool cube;
+    bool cube2;
+    int ciag[1000];
+    int cubeCiag[100];
+    for (int e = 0; e < o; e++)
+    {
+        double length;
+        wej >> length;
+        for (int i = 0; i < length; i++) {
+            cube = false;
+            wej >> ciag[i];
+            cube = ch(ciag[i]);
+            if (cube == true) {
+                cubeCiag[e] = ciag[i];
+                cube2 = true;
+            }
+        }
+        if (cube2 == false) {
+            cubeCiag[e] = 0;
+        }
+        cube2 = false;
+    }
+    for (int i = 0; i < o; i++) {
+        cout << cubeCiag[i];
 
-	return 0;
+    }
+
+    return 0;
 }
