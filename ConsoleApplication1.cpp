@@ -1,54 +1,58 @@
 ﻿#include <iostream>
-#include <bitset>
+#include <math.h>
+#include <ctime>
+#include <conio.h>
+#include <time.h>
+#include <fstream>
 
 using namespace std;
 
-unsigned a, b, c, d, e, f, g;
-
 int main() {
-	cout << "Podaj a: ";
-	cin >> a;
-	cout << "\n";
-	cout << "Podaj b: ";
-	cin >> b;
-	cout << "\n";
 
-	c = a | b;
-	d = a & b;
-	e = a ^ b;
-	cout << bitset<8>(c)<<endl;
-	cout << bitset<8>(d)<<endl;
-	cout << bitset<8>(e)<<endl;
-	
-	cout << bitset<16>(0x00FF01100)<<endl;
-	cout << sizeof(int)<<endl;
-	cout << sizeof(long long)<<endl;
+    ifstream wej("liczby1.txt");
+    ifstream wej2("liczby2.txt");
+    ofstream wyj("wynik.txt");
 
-	int red = 0x00ff0000;
-	int green = 0x0000ff00;
-	int blue = 0x000000ff;
+    int r, r2;
+    int dif;
+    bool difff= false;
+    int que, i, i2;
+    int c[1000];
+    int c2[1000];
 
-	cout << hex << (green ^ blue ^ red) << endl;
-	int kolor = 0x00123456;
-	cout << (kolor & 0x0000ff00)<<endl;
-	cout << (kolor & red)<<endl;
+    if (wej2.good()) {
+        while (!wej2.eof()) {
 
-	int r1 = 0xaa;
-	int r2 = 0xff;
-	cout << "przejscie od " << dec << r1 << "do" << r2;
-	int rStep = (r2 - r1) / 10;
+            wej2 >> dec >> c2[que];
+            if (que >= 1) {
+                r2 = r;
+                r = c2[que - 1] - c2[que];
 
-	cout << (0xaabb0099 & green);
+                if (r == r2 && que >= 2) {
+                    while(i<999 & c[i+1]>c[i])
+                    { 
+                        if (i > i2) {
+                            if (difff == false) {
+                                dif = c2[que];
+                                difff = true;
+                                i++;
 
-	int kolor2 = 0x0ff20012;
-	int czer, nieb, ziel, prze;
+                            }
+                        }
+                        i = i2;
+                    }
 
-	cout << "Jego red wynosi: " << (kolor2 & red) << endl;
-	cout << "Jego blue wynosi: " << (kolor2 & blue) << endl;
-	cout << "Jego green wynosi: " << (kolor2 & green) << endl;
-	cout << "Jego przezroczystosc wynosi: " << (kolor2 & 0x000000) << endl;
+                }
+                else {
+                    i = 0;
+                    difff = false;
+                }
+            }
 
+            que = que + 1;
+        }
 
+        cout << endl << dif << ":" << i2;
+    }
 	return 0;
-
 }
