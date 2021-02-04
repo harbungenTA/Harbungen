@@ -25,10 +25,12 @@ using namespace std;
 
 
 int main(int argc, char** argv) {
+    
     int zero = 0;
     int l = 1000;
     int numb[l], conn[l];
-    int min, max;
+    int min= 0, max= 0;
+    
     ifstream wej("liczby1.txt");
     ifstream wej2("liczby2.txt");
     ofstream wyj("wyjscie.txt");
@@ -54,6 +56,7 @@ int main(int argc, char** argv) {
             max++;
         }
     }
+    
     wyj << endl << "Max: ";
     wyj << max;
     wyj << endl << "equal: ";
