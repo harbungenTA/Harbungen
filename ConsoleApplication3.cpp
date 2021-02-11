@@ -26,6 +26,6 @@ int osiem(string liczba) {
 }
 
 int main() {
-
+    cout << liczenie(166)<<endl;
     cout << osiem << liczenie(166);
 }
