@@ -1,0 +1,82 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <math.h>
+#include <stdlib.h>
+#include <cstdlib>
+
+using namespace std;
+
+class plik {
+
+    ifstream dane;
+
+public:
+    string wiersz[20][20];
+    void obrazek();
+    bool rewers(string wiersz[20][20]);
+};
+
+void plik::obrazek() {
+
+    dane.open("dane_obrazki.txt");
+    int i;
+
+    if (dane.good() == true) {
+        for (int i = 0; i < 21; i++) {
+
+            string wiersz;
+            string w;
+            dane >> wiersz;
+            int ilosc_jedynek = 0;
+
+
+            for (int j= 0; j < 21; j++)
+            {
+                if (wiersz[i] == '1')
+                    ilosc_jedynek++;
+                wiersz[i][j] = w[j];
+                i = stoi(wiersz);
+            }
+        }
+        dane.close();
+    }
+    if (rewers(wiersz)) {
+        cout << "Rewers\n";
+    }
+    else {
+        cout << "Nie rewers\n";
+    }
+}
+
+bool plik::rewers(string wiersz[20][20]) {
+
+    int czarny = 0;
+    string piksele[20][20];
+
+
+    for (int i = 0; i < 20; ++i) {
+        for (int j = 0; j < 20; ++j) {
+            if (piksele[i][j] == "0") {
+                ++czarny;
+            }
+        }
+    }
+
+
+    if (czarny >= (2 / 20 * 20)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+int main() {
+
+    plik dane;
+    dane.obrazek();
+
+    return 0;
+}
