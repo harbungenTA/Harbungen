@@ -14,7 +14,8 @@ class plik {
 public:
  
     void spr();
-
+    bool r(string rek[20][20];
+    
 };
 
 void plik::spr() {
@@ -51,6 +52,21 @@ void plik::spr() {
             }
         }
     }
+}
+
+
+bool plik::r(string rek[20][20]){
+    for(int i = 0;i<20;++i)
+    {
+        for(int j=0;j<20;++j)
+        {
+            if(!(rek[i][j]==rek[i+10][j] && rek[i][j]==rek[i][j+10] && rek[i][j]==rek[i+10][j+10]))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 
