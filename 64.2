@@ -1,0 +1,63 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <math.h>
+#include <stdlib.h>
+#include <cstdlib>
+
+using namespace std;
+
+class plik {
+
+    ifstream dane;
+
+public:
+ 
+    void spr();
+
+};
+
+void plik::spr() {
+
+    int t[20][20];
+
+    dane.open("dane_obrazki.txt");
+
+    int temp;
+
+    for (int h = 0; h < 21 && dane >> temp; ++h) { //wczytywanie do pliku
+        t[20][20] = temp;
+
+        if (dane.good() == true) {
+
+            for (int k = 0; k < 19; k++) { // pętla zewnętrzna
+
+                for (int i = 0; i < 20; i++) {
+
+                    for (int j = 0; j < 20; j++)
+                    {
+                        if (t[k][i] == t[k][i + 10]) { //poziom
+                            cout << t[i][j] << " ";
+
+                        }
+                        if (t[i][k] == t[i + 10][k]) { //pion
+                            cout << t[i][j] << " ";
+
+                        }
+                    }
+                    cout << endl;
+                }
+                dane.close();
+            }
+        }
+    }
+}
+
+
+int main() {
+
+    plik dane;
+    dane.spr();
+
+    return 0;
+}
