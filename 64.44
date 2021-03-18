@@ -68,9 +68,11 @@ void plik::spr() {
 
                                     if ((suma % 2 == 0 && wiersz[i][20] != '0') || (suma % 2 == 1 && wiersz[i][20] == '1')) {
                                         erwiersz++;
+                                        cout << erwiersz << "," << endl;
                                     }
                                     if ((suma % 2 == 0 && kolumna[j][20] != '0') || (suma % 2 == 1 && kolumna[j][20] == '1')) {
                                         erkolumna++;
+                                        cout << erkolumna << "," << endl;
                                     }
 
                                 }
