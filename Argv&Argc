@@ -1,0 +1,30 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+	ifstream cos;
+	cos.open("C:\\Users\barte\OneDrive\Documents\main.txt");
+	
+	char** x = 0;
+
+	for (int i = 2; i < argc; i++) {
+		cos >> argv[i];
+	}
+
+	if (argc == 4) {
+		for (int i = 0; i < 4; i++) {
+			if(x>argv){
+				x = argv;
+			}
+		}
+	}else{
+		cout << "Zla ilosc parametrow";
+	}
+
+	cout << "Najwieksza liczba jest: " << x;
+
+	return 0;
+}
