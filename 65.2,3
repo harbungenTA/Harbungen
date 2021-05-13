@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+class plik {
+public:
+    plik();
+    ~plik();
+    virtual void loop() = 0;
+    ifstream wejPlik;
+    fstream wyjPlik;
+};
+
+class sus
+    :public plik
+{
+    int l1, l2;
+    int nwd(int a, int b);
+
+public:
+
+    virtual void loop();
+
+};
+
+plik::plik() {
+
+    wejPlik.open("dane_ulamki.txt");
+
+    if (!wejPlik.good())
+    {
+        cout << "Nie da się otworzyc pliku wejsciowego!" << endl;
+    }
+
+
+    wyjPlik.open("wynik.txt");
+
+    if (!wyjPlik.good())
+    {
+        cout << "Nie da się otworzyć pliku wyjsciowego!" << endl;
+    }
+}
+
+plik::~plik() {
+    wejPlik.close();
+    wyjPlik.close();
+}
+
+void sus::loop() {
+    double min1;
+
+    wejPlik >> min1;
+
+    for (double i = 0; i < min1; i++) {
+        wejPlik >> l1;
+        wejPlik >> l2;
+        double decimal = (double)l1 / (double)l2;
+            if (min1 > decimal){
+                min1 = decimal;
+        }
+    }
+    wyjPlik << "Najmniejszym ulamkiem jest " << min1 << endl; //wypisanie 1 zadania
+}
+int sus::nwd(int a, int b)
+{
+    int licznik = 0;
+    int nwd1;
+    wejPlik >> nwd1;
+    bool check = false;
+    vector <double> l1;
+    vector <double> l2;
+
+    for (int i = 0; i < nwd1; i++) {
+        if (!check) l1.push_back(a);
+        else
+            l2.push_back(b);
+        check = !check;
+    }
+
+    if (a != b) {
+        return nwd(a > b ? a - b : a, b > a ? b - a : b);
+    }
+    else {
+        licznik++;
+    }
+    wyjPlik << a;   //wypisanie 2 zadania
+}
+
+
+int main() {
+
+    sus wypisz;
+    wypisz.loop();
+
+    return 0;
+}
