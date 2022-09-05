@@ -3,25 +3,38 @@
 
 main()
 {
-int liczba,reszta;
-printf("\n podaj liczbe calkowita : ");
-scanf("%i",&liczba);
+int x;
+int q = 1;
 
-if(liczba<9){
-	printf("00000");
+printf("q 0-1?");
+scanf("%j", x);
+if(x=0){
+	q = 0;
 }else{
-	printf("0000");
+	q = 1;
 }
 
-while(liczba!=0)
-{
-reszta=liczba%16;
-	if(reszta<9){
-		printf("%i",reszta);
+int liczba,reszta;
+do{
+	printf("\n podaj liczbe calkowita : ");
+	scanf("%i",&liczba);
+
+	if(liczba<9){
+		printf("00000");
 	}else{
-		printf("%i",reszta);
+		printf("0000");
 	}
-liczba=liczba/16;
-}
+	
+	while(liczba!=0)
+	{
+	reszta=liczba%16;
+		if(reszta<9){
+			printf("%i",reszta);
+		}else{
+			printf("%i",reszta);
+		}
+	liczba=liczba/16;
+	}
+}while(q=1);
 return 0;
 }
