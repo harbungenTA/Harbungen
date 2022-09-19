@@ -1,0 +1,92 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+#include <string>
+
+using namespace std;
+
+string enkoder(string l, string kL, bool zwroc){
+	int keyP = 0;
+	int lineP = 0; 
+	int powK = 1;
+	
+	for(int a=0; a<l.length(); a++){
+		if((int)l[a] >= 'A' && (int)l[a] <= 'Z'){
+			if(keyP >= kL.length()){
+				keyP = 0;
+				powK++;
+			}
+			int pM = kL[keyP] - 'A'; 
+			int newL = ((l[a] - 'A') + pM) % 26; 
+			l[a] = (char)(newL + 'A');
+			keyP++;
+		}
+	}
+	
+	if(zwroc){
+		cout << "Powtorzenia: " << powK << endl;
+	}
+	
+	return l;
+}
+
+string dekoder(string l, string kL){
+	int keyP = 0;
+	int lineP = 0;
+	
+	for(int a=0; a<l.length(); a++){
+		
+		if((int)l[a] >= 'A' && (int)l[a] <= 'Z'){
+			if(keyP >= kL.length()){
+				keyP = 0;
+			}
+			int pM = kL[keyP] - 'A'; 
+			int newL = ((l[a] - 'A') - pM); 
+			while(newL < 0){
+				newL = 26 + newL;
+			}
+			l[a] = (char)(newL + 'A');
+			keyP++;
+		}
+	}
+	
+	return l;
+}
+
+int main(){
+	
+	ifstream dane("dokad.txt");
+	
+	string l;
+	string k = "LUBIMYCZYTAC";
+	
+	if(dane.is_open()){
+		while(getline(dane, l)){
+			cout << enkoder(l, k, true) << endl;
+		}
+		dane.close();
+	}
+	
+	ifstream dSzyfr("szyfr.txt");
+	
+	string tekst;
+	string zaszyfrowanyTekst;
+	string kluczyk;
+	
+	int count = 0;
+	
+	if(dSzyfr.is_open()){
+		while(getline(dSzyfr, l)){
+			if(count == 0){
+				tekst = l;
+				zaszyfrowanyTekst = l;
+			}
+			else if(count == 1){
+				kluczyk = l;
+			}
+			count ++;
+		}
+		dSzyfr.close();
+	}
+ cout << dekoder(tekst, kluczyk) << endl;
+}
